@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MainController!{% endblock %}
+
+{% block body %}
+
+    <div class="admin-calendar-wrapper">
+        <div class="container">
+            <h1>Witaj {{ app.user.username }}!</h1>
+            <a href="{{ path('app_logout') }}">Wyloguj się</a>
+            <div class="row">
+                <div class="col-md-12">
+                    {{ calendar | raw}}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

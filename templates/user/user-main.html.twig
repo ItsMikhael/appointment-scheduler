@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MainController!{% endblock %}
+
+{% block body %}
+
+    <div class="homepage-wrapper">
+        <div class="container">
+            <h1>Witaj {{ app.user.username }}!</h1>
+            <a href="{{ path('app_logout') }}">Wyloguj się</a>
+        </div>
+    </div>
+{% endblock %}
