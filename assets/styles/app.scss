@@ -1,10 +1,14 @@
 @import "~bootstrap/scss/bootstrap";
 
+html {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 15px;
+}
+
 .homepage-wrapper {
     margin-top: 100px;
     .container {
         text-align: center;
-        font-family: 'Source Sans Pro';
         .login-btn {
             margin-top: 50px;
             width: 150px;
@@ -80,9 +84,17 @@
 
 .admin-calendar-wrapper {
     margin-top: 100px;
+
+
     .container {
+        position: relative;
         text-align: center;
-        font-family: 'Source Sans Pro';
+        .logout {
+            right: 0;
+            top: 0;
+            position: absolute;
+            z-index: 1000;
+        }
         .row {
             .col-md-12 {
                 .calendar-nav {
@@ -102,6 +114,37 @@
             .today {
                 background-color: yellow;
             }
+        }
+    }
+}
+
+.admin-main-wrapper {
+    margin-top: 100px;
+    .container {
+        text-align: center;
+
+        .row {
+            margin-top: 50px;
+        }
+        .cta {
+            margin-top: 25px;
+        }
+    }
+}
+
+.admin-booking-wrapper {
+    margin-top: 100px;
+    .container {
+        text-align: center;
+
+        .row {
+            margin-top: 50px;
+            .btn {
+                width: 130px;
+            }
+        }
+        .booking-return {
+            margin-top: 50px;
         }
     }
 }

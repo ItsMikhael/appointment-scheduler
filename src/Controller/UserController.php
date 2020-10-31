@@ -7,14 +7,17 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Classes\Calendar;
 
+/**
+ * @Route("/user", name="user-")
+ */
 class UserController extends AbstractController
 {
     /**
-     * @Route("/user-main", name="user-main")
+     * @Route("/", name="main")
      */
     public function userMain(): Response {
         if($this->isGranted('ROLE_ADMIN')) {
-            return $this->redirectToRoute('admin-main');
+            return $this->redirectToRoute('admin.main');
         }
         if ($this->getUser()) {
             return $this->render('user/user-main.html.twig', []);
@@ -24,20 +27,20 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/user-calendar", name="user-calendar")
+     * @Route("/calendar", name="calendar")
      */
     public function userCalendar(): Response {
         if($this->isGranted('ROLE_USER')) {
-            return $this->render('user/user-calendar.html.twig', ['calendar' => Calendar::build_calendar()]);
+            return $this->render('user/user-calendar.html.twig', ['calendar' => Calendar::buildCalendar($this->getDoctrine()->getManager())]);
         }
     }
 
     /**
-     * @Route("/user-calendar/booking", name="user-booking")
+     * @Route("/calendar/booking", name="booking")
      */
     public function userBooking(): Response {
         if($this->isGranted('ROLE_USER')) {
-            return $this->render('admin/admin-calendar.html.twig', ['calendar' => Calendar::build_calendar()]);
+            return $this->render('admin/admin-calendar.html.twig', ['calendar' => Calendar::buildCalendar($this->getDoctrine()->getManager())]);
         }
     }
 }

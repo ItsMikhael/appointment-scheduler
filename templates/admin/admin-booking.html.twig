@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MainController!{% endblock %}
+
+{% block body %}
+
+    <div class="admin-booking-wrapper">
+        <div class="container">
+            <div class="booking-date" data-id={{ date }}>
+                <h1>Dzień: {{ date }}</h1>
+            </div>
+            <div class="row">
+                    {% for ts in timeslots %}
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <button class="btn btn-{{ ts[1] }} timeslots" data-id="{{ ts[0] }}">{{ ts[0] }}</button>
+                            </div>
+                        </div>
+                    {% endfor %}
+            </div>
+            <div class="booking-return">
+                <a href="{{ path('admin.calendar', {
+                    'month': month,
+                    'year': year
+                })}}" class="btn btn-primary">Powrót</a>
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}

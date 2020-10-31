@@ -9,6 +9,17 @@
 import './styles/app.scss';
 
 // Need jQuery? Install it with "yarn add jquery", then uncomment to import it.
-// import $ from 'jquery';
+import $ from 'jquery';
 
 console.log('Hello Webpack Encore! Edit me in assets/app.js');
+
+
+$(document).ready(function(){
+    let date = $('.booking-date').data('id');
+    $('.timeslots').on("click", function () {
+        let timeslot = $(this).data('id');
+        $.post('booking/ajax', {date: date, timeslot: timeslot});
+        $(this).toggleClass('btn-secondary');
+        $(this).toggleClass('btn-success');
+    })
+})

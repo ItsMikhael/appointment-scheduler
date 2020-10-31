@@ -6,8 +6,10 @@
 
     <div class="admin-calendar-wrapper">
         <div class="container">
-            <h1>Witaj {{ app.user.username }}!</h1>
-            <a href="{{ path('app_logout') }}">Wyloguj się</a>
+            <div class="logout">
+                <h4>{{ app.user.username }}</h4>
+                <a href="{{ path('app_logout') }}">Wyloguj się</a>
+            </div>
             <div class="row">
                 <div class="col-md-12">
                     {{ calendar | raw}}

@@ -4,10 +4,15 @@
 
 {% block body %}
 
-    <div class="homepage-wrapper">
+    <div class="admin-main-wrapper">
         <div class="container">
             <h1>Witaj {{ app.user.username }}!</h1>
             <a href="{{ path('app_logout') }}">Wyloguj się</a>
+
+            <div class="cta">
+                <a href="{{ path('admin.calendar') }}" class="btn btn-primary">Kalendarz</a>
+            </div>
+
         </div>
     </div>
 {% endblock %}
