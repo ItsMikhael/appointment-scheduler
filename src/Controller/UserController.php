@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -20,7 +21,13 @@ class UserController extends AbstractController
             return $this->redirectToRoute('admin.main');
         }
         if ($this->getUser()) {
-            return $this->render('user/user-main.html.twig', []);
+            $em = $this->getDoctrine()->getManager();
+            $admins = $em->getRepository(User::class)->findByRole('ADMIN');
+            $adminUsernames = [];
+            foreach($admins as $admin) {
+                $adminUsernames[] = $admin->getUsername();
+            }
+            return $this->render('user/user-main.html.twig', ['admins' => $adminUsernames]);
         } else {
             return $this->redirectToRoute('main');
         }
@@ -31,7 +38,9 @@ class UserController extends AbstractController
      */
     public function userCalendar(): Response {
         if($this->isGranted('ROLE_USER')) {
-            return $this->render('user/user-calendar.html.twig', ['calendar' => Calendar::buildCalendar($this->getDoctrine()->getManager())]);
+            $calendar = new Calendar();
+            $calendar->setIsAdmin(false);
+            return $this->render('user/user-calendar.html.twig', ['calendar' => $calendar->buildCalendar($this->getDoctrine()->getManager())]);
         }
     }
 

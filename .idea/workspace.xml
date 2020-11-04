@@ -20,31 +20,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bff634f9-6b71-47c4-b24e-af66b1e99e64" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/migrations/Version20201029155036.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/migrations/Version20201030014410.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entity/AdminBookings.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Repository/AdminBookingsRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/admin/admin-booking.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/Scheduler.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Scheduler.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/styles/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/app.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/doctrine.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/doctrine.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Classes/Calendar.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes/Calendar.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/MainController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/MainController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/SecurityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/SecurityController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/UserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/UserRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/admin-calendar.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/admin-calendar.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/admin-main.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/admin-main.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/main/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/main/index.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/user/user-main.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/user-main.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -173,6 +162,9 @@
       <path value="$PROJECT_DIR$/vendor/symfony/webpack-encore-bundle" />
       <path value="$PROJECT_DIR$/vendor/friendsofsymfony/jsrouting-bundle" />
       <path value="$PROJECT_DIR$/vendor/willdurand/jsonp-callback-validator" />
+      <path value="$PROJECT_DIR$/vendor/roave/better-reflection" />
+      <path value="$PROJECT_DIR$/vendor/roave/signature" />
+      <path value="$PROJECT_DIR$/vendor/scienta/doctrine-json-functions" />
     </include_path>
   </component>
   <component name="ProjectId" id="1jMaC9iuujDOwaiWxTcLJPmlfSO" />
@@ -216,6 +208,8 @@
       <workItem from="1603981351995" duration="8981000" />
       <workItem from="1604053191563" duration="2014000" />
       <workItem from="1604076056688" duration="3176000" />
+      <workItem from="1604413228310" duration="2560000" />
+      <workItem from="1604485852629" duration="5033000" />
     </task>
     <servers />
   </component>
@@ -254,14 +248,18 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2330" y="179" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1603619401954" />
+    <state x="2421" y="267" key="Vcs.Push.Dialog.v2" timestamp="1604413439786">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2421" y="267" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1604413439786" />
     <state x="2536" y="133" width="585" height="801" key="find.popup" timestamp="1603628750338">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2536" y="133" width="585" height="801" key="find.popup/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1603628750338" />
-    <state x="2485" y="249" key="run.anything.popup" timestamp="1603705153580">
+    <state x="2485" y="249" key="run.anything.popup" timestamp="1604492021655">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="2485" y="249" key="run.anything.popup/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1603705153580" />
+    <state x="2485" y="249" key="run.anything.popup/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1604492021655" />
     <state x="2492" y="253" width="672" height="678" key="search.everywhere.popup" timestamp="1603666488690">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>

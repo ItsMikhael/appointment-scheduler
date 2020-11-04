@@ -12,7 +12,9 @@ use Doctrine\Persistence\ObjectManager;
 class Calendar
 {
 
-    public static function buildCalendar(ObjectManager $em) {
+    private $isAdmin;
+
+    public function buildCalendar(ObjectManager $em) {
         $dateInfo = getdate();
         if(isset($_GET['month']) && isset($_GET['year'])) {
             $dateMonth = $_GET['month'];
@@ -132,15 +134,13 @@ class Calendar
             if($date < date('Y-m-d')) {
                 $calendar .= "<td> <h4>$currentDayRel</h4>";
             } else {
-                if($em->getRepository(AdminBookings::class)->findBy([
-                    'date' => $date
-                ])) {
-                    $calendar .= "<td class='$today'><h4>$currentDayRel</h4><a href='calendar/booking?date=$date' 
-                              class='btn btn-success btn-xs'>Zarządzaj</a></td>";
+
+                if($this->isAdmin) {
+                    $calendar .= $this->showAdminCalendarButtons($em, $date, $today, $currentDayRel);
                 } else {
-                    $calendar .= "<td class='$today'><h4>$currentDayRel</h4><a href='calendar/booking?date=$date' 
-                              class='btn btn-secondary btn-xs'>Zarządzaj</a></td>";
+                    $calendar .= $this->showUserCalendarButtons($em, $date, $today, $currentDayRel);
                 }
+
             }
 
             $currentDay++;
@@ -189,4 +189,25 @@ class Calendar
 
     }
 
+    public function showAdminCalendarButtons(ObjectManager $em, $date, $today, $currentDayRel) {
+        if($em->getRepository(AdminBookings::class)->findBy([
+            'date' => $date
+        ])) {
+            return "<td class='$today'><h4>$currentDayRel</h4><a href='calendar/booking?date=$date' 
+                              class='btn btn-success btn-xs'>Zarządzaj</a></td>";
+        } else {
+            return "<td class='$today'><h4>$currentDayRel</h4><a href='calendar/booking?date=$date' 
+                              class='btn btn-secondary btn-xs'>Zarządzaj</a></td>";
+        }
+    }
+
+    public function showUserCalendarButtons(ObjectManager $em, $date, $today, $currentDayRel) {
+        return "<td class='$today'><h4>$currentDayRel</h4></td>";
+    }
+
+    public function setIsAdmin(bool $isAdmin): self {
+        $this->isAdmin = $isAdmin;
+
+        return $this;
+    }
 }

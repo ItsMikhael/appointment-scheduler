@@ -29,8 +29,10 @@ class AdminController extends AbstractController
      */
     public function adminCalendar(): Response {
         if($this->isGranted('ROLE_ADMIN')) {
+            $calendar = new Calendar();
+            $calendar->setIsAdmin(true);
             return $this->render('admin/admin-calendar.html.twig', [
-                'calendar' => Calendar::buildCalendar($this->getDoctrine()->getManager())
+                'calendar' => $calendar->buildCalendar($this->getDoctrine()->getManager())
             ]);
         }
     }

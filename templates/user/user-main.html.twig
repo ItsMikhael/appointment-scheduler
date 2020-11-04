@@ -4,15 +4,19 @@
 
 {% block body %}
 
-    <div class="homepage-wrapper">
+    <div class="user-main-wrapper">
         <div class="container">
             <h1>Witaj {{ app.user.username }}!</h1>
             <a href="{{ path('app_logout') }}">Wyloguj się</a>
 
-            <div class="cta">
-                <a href="{{ path('user-calendar') }}" class="btn btn-primary">Kalendarz</a>
+            <div class="book-cta">
+                <h2>Zarezerwuj wizytę u:</h2>
+                {% for admin in admins %}
+                    <div class="cta">
+                        <a href="{{ path('user-calendar') }}" class="btn btn-primary">{{ admin }}</a>
+                    </div>
+                {% endfor %}
             </div>
-
         </div>
     </div>
 {% endblock %}
