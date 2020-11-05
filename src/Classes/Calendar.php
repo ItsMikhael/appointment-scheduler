@@ -202,7 +202,14 @@ class Calendar
     }
 
     public function showUserCalendarButtons(ObjectManager $em, $date, $today, $currentDayRel) {
-        return "<td class='$today'><h4>$currentDayRel</h4></td>";
+        if($em->getRepository(AdminBookings::class)->findBy([
+            'date' => $date
+        ])) {
+            return "<td class='$today'><h4>$currentDayRel</h4><a href='calendar/booking?date=$date' 
+                              class='btn btn-success btn-xs'>Zarezerwuj</a></td>";
+        } else {
+            return "<td class='$today'><h4>$currentDayRel</h4></td>";
+        }
     }
 
     public function setIsAdmin(bool $isAdmin): self {

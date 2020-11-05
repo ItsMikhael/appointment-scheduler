@@ -32,6 +32,11 @@ class AdminBookings
      */
     private $timeslot;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $is_booked;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -69,6 +74,18 @@ class AdminBookings
     public function setTimeslot(string $timeslot): self
     {
         $this->timeslot = $timeslot;
+
+        return $this;
+    }
+
+    public function getIsBooked(): ?bool
+    {
+        return $this->is_booked;
+    }
+
+    public function setIsBooked(bool $is_booked): self
+    {
+        $this->is_booked = $is_booked;
 
         return $this;
     }

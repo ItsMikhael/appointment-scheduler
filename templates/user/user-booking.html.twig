@@ -4,22 +4,22 @@
 
 {% block body %}
 
-    <div class="admin-booking-wrapper">
+    <div class="user-booking-wrapper">
         <div class="container">
             <div class="booking-date" data-id={{ date }}>
                 <h1>Dzień: {{ date }}</h1>
             </div>
-            <div class="row">
-                    {% for ts in timeslots %}
+            <div class="row justify-content-center">
+                {% for ts in timeslots %}
                         <div class="col-md-2">
                             <div class="form-group">
-                                <button class="btn btn-{{ ts[1] }} timeslots-admin" data-id="{{ ts[0] }}">{{ ts[0] }}</button>
+                                <button class="btn btn-success timeslots-user" data-id="">{{ ts }}</button>
                             </div>
                         </div>
-                    {% endfor %}
+                {% endfor %}
             </div>
             <div class="booking-return">
-                <a href="{{ path('admin.calendar', {
+                <a href="{{ path('user-calendar', {
                     'month': month,
                     'year': year
                 })}}" class="btn btn-primary">Powrót</a>

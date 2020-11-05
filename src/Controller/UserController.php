@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\AdminBookings;
 use App\Entity\User;
+use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -49,7 +51,25 @@ class UserController extends AbstractController
      */
     public function userBooking(): Response {
         if($this->isGranted('ROLE_USER')) {
-            return $this->render('admin/admin-calendar.html.twig', ['calendar' => Calendar::buildCalendar($this->getDoctrine()->getManager())]);
+
+            $date = new DateTime($_GET['date']);
+            $month = $date->format("m");
+            $year = $date->format('Y');
+
+            $em = $this->getDoctrine()->getManager();
+            $availableBookings = $em->getRepository(AdminBookings::class)->findBy([
+                'date' => $_GET['date']]);
+
+            $timeslots = [];
+            foreach($availableBookings as $booking) {
+                $timeslots[] = $booking->getTimeslot();
+            }
+
+            return $this->render('user/user-booking.html.twig', [
+                'date' => $_GET['date'],
+                'month' => $month,
+                'year' => $year,
+                'timeslots' => $timeslots]);
         }
     }
 }

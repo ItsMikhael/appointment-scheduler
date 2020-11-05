@@ -16,7 +16,7 @@ console.log('Hello Webpack Encore! Edit me in assets/app.js');
 
 $(document).ready(function(){
     let date = $('.booking-date').data('id');
-    $('.timeslots').on("click", function () {
+    $('.timeslots-admin').on("click", function () {
         let timeslot = $(this).data('id');
         $.post('booking/ajax', {date: date, timeslot: timeslot});
         $(this).toggleClass('btn-secondary');

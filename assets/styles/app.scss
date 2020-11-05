@@ -162,4 +162,21 @@ html {
     }
 }
 
+.user-booking-wrapper {
+    margin-top: 100px;
+    .container {
+        text-align: center;
+
+        .row {
+            margin-top: 50px;
+            .btn {
+                width: 130px;
+            }
+        }
+        .booking-return {
+            margin-top: 50px;
+        }
+    }
+}
+
 
