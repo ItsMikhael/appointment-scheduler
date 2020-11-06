@@ -3,9 +3,11 @@
 namespace App\Controller;
 
 use App\Entity\AdminBookings;
+use App\Entity\Bookings;
 use App\Entity\User;
 use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Classes\Calendar;
@@ -36,9 +38,11 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/calendar", name="calendar")
+     * @Route("/calendar/{email}", name="calendar")
+     * @param User $admin
+     * @return Response
      */
-    public function userCalendar(): Response {
+    public function userCalendar(User $admin): Response {
         if($this->isGranted('ROLE_USER')) {
             $calendar = new Calendar();
             $calendar->setIsAdmin(false);
@@ -58,7 +62,9 @@ class UserController extends AbstractController
 
             $em = $this->getDoctrine()->getManager();
             $availableBookings = $em->getRepository(AdminBookings::class)->findBy([
-                'date' => $_GET['date']]);
+                'date' => $_GET['date']
+            ]);
+
 
             $timeslots = [];
             foreach($availableBookings as $booking) {
@@ -71,5 +77,42 @@ class UserController extends AbstractController
                 'year' => $year,
                 'timeslots' => $timeslots]);
         }
+    }
+    /**
+     * @Route("/calendar/booking/ajax", name="booking-ajax")
+     * @param Request $request
+     */
+    public function ajaxAction(Request $request) {
+
+        $user = $this->getUser();
+        $em = $this->getDoctrine()->getManager();
+        $date = $request->request->get('date');
+        $timeslot = $request->request->get('timeslot');
+
+        $adminBooking = $em->getRepository(AdminBookings::Class)->findOneBy([
+            'date' => $date,
+            'timeslot' => $timeslot,
+        ]);
+
+        $admin = $adminBooking->getAdminName();
+        $admin = $em->getRepository(User::class)->findOneBy([
+            'email' => $admin
+        ]);
+        $adminId = $admin->getId();
+
+
+        $booking = new Bookings();
+        $booking->setAdminId($adminId);
+        $booking->setTimeslotId($adminBooking->getId());
+        $booking->setUserId($user->getId());
+        $adminBooking->setIsBooked(true);
+
+        $em->persist($booking);
+        $em->persist($adminBooking);
+
+        $em->flush();
+
+        return new Response();
+
     }
 }

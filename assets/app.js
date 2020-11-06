@@ -14,12 +14,25 @@ import $ from 'jquery';
 console.log('Hello Webpack Encore! Edit me in assets/app.js');
 
 
+
 $(document).ready(function(){
-    let date = $('.booking-date').data('id');
-    $('.timeslots-admin').on("click", function () {
+
+    booking('.timeslots-admin', true);
+    booking('.timeslots-user', false);
+
+})
+
+function booking(selector, isAdmin) {
+    $(selector).on("click", function () {
+        let date = $('.booking-date').data('id');
         let timeslot = $(this).data('id');
         $.post('booking/ajax', {date: date, timeslot: timeslot});
-        $(this).toggleClass('btn-secondary');
-        $(this).toggleClass('btn-success');
+        if(isAdmin) {
+            $(this).toggleClass('btn-secondary');
+            $(this).toggleClass('btn-success');
+        } else {
+            $(this).toggleClass('btn-success');
+            $(this).toggleClass('btn-warning');
+        }
     })
-})
+}

@@ -20,18 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bff634f9-6b71-47c4-b24e-af66b1e99e64" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/migrations/Version20201105175729.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/migrations/Version20201105175939.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entity/Bookings.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Repository/BookingsRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/user/user-booking.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/app.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Classes/Calendar.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes/Calendar.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AdminController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/AdminBookings.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/AdminBookings.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/admin-booking.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/admin-booking.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user/user-booking.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/user-booking.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user/user-main.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/user-main.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -178,10 +172,11 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/user" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="SCSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="watcher.settings" />
+    <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -209,6 +204,11 @@
       <workItem from="1604413228310" duration="2560000" />
       <workItem from="1604485852629" duration="5033000" />
       <workItem from="1604587657750" duration="3892000" />
+      <workItem from="1604654088804" duration="3000" />
+      <workItem from="1604654403015" duration="21000" />
+      <workItem from="1604654481371" duration="52000" />
+      <workItem from="1604654803259" duration="38000" />
+      <workItem from="1604654900513" duration="5770000" />
     </task>
     <servers />
   </component>
@@ -231,10 +231,10 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="2559" y="289" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1603629373045">
+    <state x="2559" y="289" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1604669541808">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="2559" y="289" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1603629373045" />
+    <state x="2559" y="289" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1604669541808" />
     <state x="3121" y="222" key="NewPhpClassDialog" timestamp="1603704732936">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>

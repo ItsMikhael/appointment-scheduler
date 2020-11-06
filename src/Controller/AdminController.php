@@ -81,6 +81,7 @@ class AdminController extends AbstractController
             $booking->setAdminName($user);
             $booking->setDate($date);
             $booking->setTimeslot($timeslot);
+            $booking->setIsBooked(false);
 
             $em->persist($booking);
         }

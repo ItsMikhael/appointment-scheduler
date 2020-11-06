@@ -13,7 +13,7 @@
                 <h2>Zarezerwuj wizytę u:</h2>
                 {% for admin in admins %}
                     <div class="cta">
-                        <a href="{{ path('user-calendar') }}" class="btn btn-primary">{{ admin }}</a>
+                        <a href="{{ path('user-calendar', {email: admin}) }}" class="btn btn-primary" id="{{ admin }}">{{ admin }}</a>
                     </div>
                 {% endfor %}
             </div>
