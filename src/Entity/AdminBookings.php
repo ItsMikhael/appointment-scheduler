@@ -18,9 +18,9 @@ class AdminBookings
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="integer", length=50)
      */
-    private $admin_name;
+    private $admin_id;
 
     /**
      * @ORM\Column(type="string")
@@ -42,14 +42,14 @@ class AdminBookings
         return $this->id;
     }
 
-    public function getAdminName(): ?string
+    public function getAdminId(): ?int
     {
-        return $this->admin_name;
+        return $this->admin_id;
     }
 
-    public function setAdminName(string $admin_name): self
+    public function setAdminId(string $admin_id): self
     {
-        $this->admin_name = $admin_name;
+        $this->admin_id = $admin_id;
 
         return $this;
     }

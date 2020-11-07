@@ -20,12 +20,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bff634f9-6b71-47c4-b24e-af66b1e99e64" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/migrations/Version20201107151928.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/.htaccess" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Scheduler.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Scheduler.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/styles/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/app.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Classes/Calendar.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes/Calendar.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AdminController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/AdminBookings.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/AdminBookings.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/admin-calendar.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/admin-calendar.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/user/user-booking.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/user-booking.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/user/user-main.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/user-main.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user/user-calendar.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/user-calendar.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -157,6 +168,7 @@
       <path value="$PROJECT_DIR$/vendor/roave/better-reflection" />
       <path value="$PROJECT_DIR$/vendor/roave/signature" />
       <path value="$PROJECT_DIR$/vendor/scienta/doctrine-json-functions" />
+      <path value="$PROJECT_DIR$/vendor/symfony/apache-pack" />
     </include_path>
   </component>
   <component name="ProjectId" id="1jMaC9iuujDOwaiWxTcLJPmlfSO" />
@@ -208,7 +220,8 @@
       <workItem from="1604654403015" duration="21000" />
       <workItem from="1604654481371" duration="52000" />
       <workItem from="1604654803259" duration="38000" />
-      <workItem from="1604654900513" duration="5770000" />
+      <workItem from="1604654900513" duration="6038000" />
+      <workItem from="1604759026255" duration="6800000" />
     </task>
     <servers />
   </component>

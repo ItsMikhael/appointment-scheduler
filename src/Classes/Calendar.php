@@ -205,7 +205,7 @@ class Calendar
         if($em->getRepository(AdminBookings::class)->findBy([
             'date' => $date
         ])) {
-            return "<td class='$today'><h4>$currentDayRel</h4><a href='calendar/booking?date=$date' 
+            return "<td class='$today'><h4>$currentDayRel</h4><a href='". explode('?',$_SERVER['REQUEST_URI'])[0] . "/booking?date=$date' 
                               class='btn btn-success btn-xs'>Zarezerwuj</a></td>";
         } else {
             return "<td class='$today'><h4>$currentDayRel</h4></td>";

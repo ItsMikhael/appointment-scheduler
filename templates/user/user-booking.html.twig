@@ -13,7 +13,11 @@
                 {% for ts in timeslots %}
                         <div class="col-md-2">
                             <div class="form-group">
-                                <button class="btn btn-success timeslots-user" data-id="{{ ts }}">{{ ts }}</button>
+                                {% if ts[1] %}
+                                    <button class="btn btn-warning timeslots-user booked" data-id="{{ ts[0] }}">{{ ts[0] }}</button>
+                                {% else %}
+                                    <button class="btn btn-success timeslots-user" data-id="{{ ts[0] }}">{{ ts[0] }}</button>
+                                {% endif %}
                             </div>
                         </div>
                 {% endfor %}
@@ -21,7 +25,8 @@
             <div class="booking-return">
                 <a href="{{ path('user-calendar', {
                     'month': month,
-                    'year': year
+                    'year': year,
+                    'email': email
                 })}}" class="btn btn-primary">Powrót</a>
             </div>
         </div>

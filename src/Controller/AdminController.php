@@ -64,7 +64,6 @@ class AdminController extends AbstractController
     public function ajaxAction(Request $request) {
 
         $user = $this->getUser();
-        $user = $user->getUsername();
         $em = $this->getDoctrine()->getManager();
         $date = $request->request->get('date');
         $timeslot = $request->request->get('timeslot');
@@ -78,7 +77,7 @@ class AdminController extends AbstractController
             $em->remove($alreadyBooked);
         } else {
             $booking = new AdminBookings();
-            $booking->setAdminName($user);
+            $booking->setAdminId($user->getId());
             $booking->setDate($date);
             $booking->setTimeslot($timeslot);
             $booking->setIsBooked(false);

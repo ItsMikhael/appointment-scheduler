@@ -16,6 +16,7 @@
         "roave/better-reflection": "^4.11",
         "scienta/doctrine-json-functions": "^4.1",
         "sensio/framework-extra-bundle": "^5.1",
+        "symfony/apache-pack": "^1.0",
         "symfony/asset": "5.1.*",
         "symfony/console": "5.1.*",
         "symfony/dotenv": "5.1.*",

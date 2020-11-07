@@ -24,15 +24,18 @@ $(document).ready(function(){
 
 function booking(selector, isAdmin) {
     $(selector).on("click", function () {
-        let date = $('.booking-date').data('id');
-        let timeslot = $(this).data('id');
-        $.post('booking/ajax', {date: date, timeslot: timeslot});
-        if(isAdmin) {
-            $(this).toggleClass('btn-secondary');
-            $(this).toggleClass('btn-success');
-        } else {
-            $(this).toggleClass('btn-success');
-            $(this).toggleClass('btn-warning');
+        if(!$(this).hasClass('booked')) {
+            let date = $('.booking-date').data('id');
+            let timeslot = $(this).data('id');
+            $.post('booking/ajax', {date: date, timeslot: timeslot});
+            if(isAdmin) {
+                $(this).toggleClass('btn-secondary');
+                $(this).toggleClass('btn-success');
+            } else {
+                $(this).toggleClass('btn-success');
+                $(this).toggleClass('btn-warning');
+                $(this).toggleClass('booked')
+            }
         }
     })
 }

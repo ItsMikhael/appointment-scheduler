@@ -46,14 +46,16 @@ class UserController extends AbstractController
         if($this->isGranted('ROLE_USER')) {
             $calendar = new Calendar();
             $calendar->setIsAdmin(false);
-            return $this->render('user/user-calendar.html.twig', ['calendar' => $calendar->buildCalendar($this->getDoctrine()->getManager())]);
+            return $this->render('user/user-calendar.html.twig', [
+                'calendar' => $calendar->buildCalendar($this->getDoctrine()->getManager())]);
         }
     }
 
     /**
-     * @Route("/calendar/booking", name="booking")
+     * @Route("/calendar/{email}/booking", name="booking")
+     *  @param User $admin
      */
-    public function userBooking(): Response {
+    public function userBooking(User $admin): Response {
         if($this->isGranted('ROLE_USER')) {
 
             $date = new DateTime($_GET['date']);
@@ -62,24 +64,37 @@ class UserController extends AbstractController
 
             $em = $this->getDoctrine()->getManager();
             $availableBookings = $em->getRepository(AdminBookings::class)->findBy([
-                'date' => $_GET['date']
+                'date' => $_GET['date'],
+                'admin_id' => $admin->getId(),
             ]);
-
 
             $timeslots = [];
             foreach($availableBookings as $booking) {
-                $timeslots[] = $booking->getTimeslot();
+                if($booking->getIsBooked()) {
+                    $userBooking = $em->getRepository(Bookings::Class)->findOneBy([
+                        'timeslot_id' => $booking->getId(),
+                    ]);
+                    if($userBooking->getUserId() == $this->getUser()->getId()) {
+                        $timeslots[] = [$booking->getTimeslot(), true];
+                    }
+                } else {
+                    $timeslots[] = [$booking->getTimeslot(), false];
+                }
+
             }
+            sort($timeslots);
+
 
             return $this->render('user/user-booking.html.twig', [
                 'date' => $_GET['date'],
                 'month' => $month,
                 'year' => $year,
-                'timeslots' => $timeslots]);
+                'timeslots' => $timeslots,
+                'email' => $admin->getEmail()]);
         }
     }
     /**
-     * @Route("/calendar/booking/ajax", name="booking-ajax")
+     * @Route("/calendar/{email}/booking/ajax", name="booking-ajax")
      * @param Request $request
      */
     public function ajaxAction(Request $request) {
@@ -94,9 +109,9 @@ class UserController extends AbstractController
             'timeslot' => $timeslot,
         ]);
 
-        $admin = $adminBooking->getAdminName();
+        $admin = $adminBooking->getAdminId();
         $admin = $em->getRepository(User::class)->findOneBy([
-            'email' => $admin
+            'id' => $admin
         ]);
         $adminId = $admin->getId();
 
