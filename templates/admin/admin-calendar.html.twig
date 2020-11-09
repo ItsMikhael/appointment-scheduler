@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin/base-admin.html.twig' %}
 
 {% block title %}Hello MainController!{% endblock %}
 
@@ -6,10 +6,6 @@
 
     <div class="calendar-wrapper admin">
         <div class="container">
-            <div class="logout">
-                <h4>{{ app.user.username }}</h4>
-                <a href="{{ path('app_logout') }}">Wyloguj się</a>
-            </div>
             <div class="row">
                 <div class="col-md-12">
                     {{ calendar | raw}}

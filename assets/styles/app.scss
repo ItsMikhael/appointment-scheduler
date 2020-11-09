@@ -82,6 +82,33 @@ html {
     }
 }
 
+.navbar {
+    height: 75px;
+    .container {
+        position: relative;
+        .navbar-nav {
+            margin: auto;
+            li {
+                font-size: 20px;
+            }
+        }
+        .logout {
+            position: absolute;
+            right: 0;
+            text-decoration: none;
+            text-align: center;
+            a {
+                color: white;
+                font-size: 14px;
+            }
+            h4 {
+                font-size: 18px;
+                margin: 0;
+            }
+        }
+    }
+}
+
 .user-main-wrapper {
     margin-top: 100px;
     .container {
@@ -96,7 +123,7 @@ html {
 }
 
 .calendar-wrapper {
-    margin-top: 100px;
+    margin-top: 50px;
     .container {
         position: relative;
         text-align: center;
@@ -176,5 +203,6 @@ html {
         }
     }
 }
+
 
 
