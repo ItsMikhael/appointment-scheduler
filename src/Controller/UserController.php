@@ -94,10 +94,10 @@ class UserController extends AbstractController
         }
     }
     /**
-     * @Route("/calendar/{email}/booking/ajax", name="booking-ajax")
+     * @Route("/calendar/{email}/booking/create", name="booking-create")
      * @param Request $request
      */
-    public function ajaxAction(Request $request) {
+    public function createBooking(Request $request) {
 
         $user = $this->getUser();
         $em = $this->getDoctrine()->getManager();
@@ -128,6 +128,60 @@ class UserController extends AbstractController
         $em->flush();
 
         return new Response();
+
+    }
+
+    /**
+     * @Route("/appointments", name="appointments")
+     */
+    public function userAppointments() {
+
+        $em = $this->getDoctrine()->getManager();
+
+        $bookings = $em->getRepository(Bookings::class)->findBy([
+            'user_id' => $this->getUser()->getId()
+        ]);
+
+        $adminBookings = [];
+
+        foreach($bookings as $booking) {
+            $adminBookings[] = $em->getRepository(AdminBookings::class)->findOneBy([
+                'id' => $booking->getTimeslotId(),
+            ]);
+        }
+
+        $appointments = [];
+
+        foreach($adminBookings as $booking) {
+            $appointments[] = [$booking, $em->getRepository(User::class)->findOneBy([
+                'id' => $booking->getAdminId(),
+            ])->getEmail()];
+        }
+
+        return $this->render('user/user-appointments.html.twig', [
+            'appointments' => $appointments]);
+    }
+
+    /**
+     * @Route("/appointments/delete", name="booking-delete")
+     * @param Request $request
+     */
+    public function deleteBooking(Request $request) {
+
+        $em = $this->getDoctrine()->getManager();
+        $timeslot_id = $request->request->get('timeslot_id');
+
+        $em->remove($em->getRepository(Bookings::class)->findOneBy([
+            'timeslot_id' => $timeslot_id,
+        ]));
+
+        $em->getRepository(AdminBookings::class)->findOneBy([
+            'id' => $timeslot_id,
+        ])->setIsBooked(false);
+
+        $em->flush();
+
+        return new Response;
 
     }
 }

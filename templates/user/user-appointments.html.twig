@@ -1,0 +1,27 @@
+{% extends 'user/base-user.html.twig' %}
+
+{% block title %}Twoje rezerwacje{% endblock %}
+
+{% block body %}
+
+    <div class="user-main-wrapper">
+        <div class="container">
+            <table class="table table-bordered">
+                <tr>
+                    <th>Admin</th>
+                    <th>Dzień</th>
+                    <th>Czas</th>
+                    <th>Akcje</th>
+                </tr>
+                {% for app in appointments %}
+                    <tr>
+                        <td>{{ app[1] }}</td>
+                        <td>{{ app[0].getDate }}</td>
+                        <td>{{ app[0].getTimeslot }}</td>
+                        <td><btn class="btn btn-danger cancel-appointment" data-id="{{ app[0].getId }}">Odwołaj</btn></td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+{% endblock %}
