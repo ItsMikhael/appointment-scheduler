@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\AdminBookingsRepository;
+use App\Repository\AdminAvailabilityRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=AdminBookingsRepository::class)
+ * @ORM\Entity(repositoryClass=AdminAvailabilityRepository::class)
  */
-class AdminBookings
+class AdminAvailability
 {
     /**
      * @ORM\Id

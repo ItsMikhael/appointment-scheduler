@@ -12,17 +12,18 @@ import './styles/app.scss';
 import $ from 'jquery';
 require('bootstrap');
 
-console.log('Hello Webpack Encore! Edit me in assets/app.js');
-
 
 
 $(document).ready(function(){
 
+    // managing nav active class
     $('a[href$="' + location.pathname + '"]').addClass('active');
 
+    // managing booking timeslots for admin and user panels
     booking('.timeslots-admin', true);
     booking('.timeslots-user', false);
 
+    // user appointments page management
     $('.cancel-appointment').on("click", function() {
         $.post('appointments/delete', {timeslot_id: $(this).data('id')},
             location.reload())
@@ -35,11 +36,12 @@ function booking(selector, isAdmin) {
         if(!$(this).hasClass('booked')) {
             let date = $('.booking-date').data('id');
             let timeslot = $(this).data('id');
-            $.post('booking/create', {date: date, timeslot: timeslot});
             if(isAdmin) {
+                $.post('booking/manage', {date: date, timeslot: timeslot});
                 $(this).toggleClass('btn-secondary');
                 $(this).toggleClass('btn-success');
             } else {
+                $.post('booking/create', {date: date, timeslot: timeslot});
                 $(this).toggleClass('btn-success');
                 $(this).toggleClass('btn-warning');
                 $(this).toggleClass('booked')

@@ -4,7 +4,7 @@
 namespace App\Classes;
 
 
-use App\Entity\AdminBookings;
+use App\Entity\AdminAvailability;
 use DateInterval;
 use DateTime;
 use Doctrine\Persistence\ObjectManager;
@@ -49,46 +49,7 @@ class Calendar
         $nextMonth = date('m', mktime(0, 0, 0, $dateMonth+1, 1, $dateYear));
         $nextYear = date('Y', mktime(0, 0, 0, $dateMonth+1, 1, $dateYear));
 
-        switch($monthName) {
-            case 'January':
-                $monthName = 'Styczeń';
-                break;
-            case 'February':
-                $monthName = 'Luty';
-                break;
-            case 'March':
-                $monthName = 'Marzec';
-                break;
-            case 'April':
-                $monthName = 'Kwiecień';
-                break;
-            case 'May':
-                $monthName = 'Maj';
-                break;
-            case 'June':
-                $monthName = 'Czerwiec';
-                break;
-            case 'July':
-                $monthName = 'Lipiec';
-                break;
-            case 'August':
-                $monthName = 'Sierpień';
-                break;
-            case 'September':
-                $monthName = 'Wrzesień';
-                break;
-            case 'October':
-                $monthName = 'Październik';
-                break;
-            case 'November':
-                $monthName = 'Listopad';
-                break;
-            case 'December':
-                $monthName = 'Grudzień';
-                break;
-            default:
-                break;
-        }
+        $monthName = $this->translateMonth($monthName);
 
         $calendar = "<center> <h2> $monthName $dateYear</h2></center>";
         $calendar .= "<div class='calendar-nav'>";
@@ -178,7 +139,7 @@ class Calendar
             $theSlot = $intStart->format("H:i") . " - " . $endPeriod->format("H:i");
 
             $slots[] = [$theSlot,
-            $em->getRepository(AdminBookings::class)->findOneBy([
+            $em->getRepository(AdminAvailability::class)->findOneBy([
                 'date' => $date,
                 'timeslot' => $theSlot,
             ]) ? 'success' : 'secondary'];
@@ -189,8 +150,8 @@ class Calendar
 
     }
 
-    public function showAdminCalendarButtons(ObjectManager $em, $date, $today, $currentDayRel) {
-        if($em->getRepository(AdminBookings::class)->findBy([
+    private function showAdminCalendarButtons(ObjectManager $em, $date, $today, $currentDayRel) {
+        if($em->getRepository(AdminAvailability::class)->findBy([
             'date' => $date
         ])) {
             return "<td class='$today'><h4>$currentDayRel</h4><a href='calendar/booking?date=$date' 
@@ -201,8 +162,8 @@ class Calendar
         }
     }
 
-    public function showUserCalendarButtons(ObjectManager $em, $date, $today, $currentDayRel) {
-        if($em->getRepository(AdminBookings::class)->findBy([
+    private function showUserCalendarButtons(ObjectManager $em, $date, $today, $currentDayRel) {
+        if($em->getRepository(AdminAvailability::class)->findBy([
             'date' => $date
         ])) {
             return "<td class='$today'><h4>$currentDayRel</h4><a href='". explode('?',$_SERVER['REQUEST_URI'])[0] . "/booking?date=$date' 
@@ -210,6 +171,50 @@ class Calendar
         } else {
             return "<td class='$today'><h4>$currentDayRel</h4></td>";
         }
+    }
+
+    private function translateMonth($monthName): string {
+        switch($monthName) {
+            case 'January':
+                $monthName = 'Styczeń';
+                break;
+            case 'February':
+                $monthName = 'Luty';
+                break;
+            case 'March':
+                $monthName = 'Marzec';
+                break;
+            case 'April':
+                $monthName = 'Kwiecień';
+                break;
+            case 'May':
+                $monthName = 'Maj';
+                break;
+            case 'June':
+                $monthName = 'Czerwiec';
+                break;
+            case 'July':
+                $monthName = 'Lipiec';
+                break;
+            case 'August':
+                $monthName = 'Sierpień';
+                break;
+            case 'September':
+                $monthName = 'Wrzesień';
+                break;
+            case 'October':
+                $monthName = 'Październik';
+                break;
+            case 'November':
+                $monthName = 'Listopad';
+                break;
+            case 'December':
+                $monthName = 'Grudzień';
+                break;
+            default:
+                break;
+        }
+        return $monthName;
     }
 
     public function setIsAdmin(bool $isAdmin): self {

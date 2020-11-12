@@ -1,4 +1,4 @@
-{% extends 'user/base-user.html.twig' %}
+{% extends 'user/base.html.twig' %}
 
 {% block title %}Twoje rezerwacje{% endblock %}
 
@@ -18,7 +18,10 @@
                         <td>{{ app[1] }}</td>
                         <td>{{ app[0].getDate }}</td>
                         <td>{{ app[0].getTimeslot }}</td>
-                        <td><btn class="btn btn-danger cancel-appointment" data-id="{{ app[0].getId }}">Odwołaj</btn></td>
+                        <td><btn class="btn btn-danger cancel-appointment" data-id="{{ app[0].getId }}">
+                                Odwołaj
+                            </btn>
+                        </td>
                     </tr>
                 {% endfor %}
             </table>

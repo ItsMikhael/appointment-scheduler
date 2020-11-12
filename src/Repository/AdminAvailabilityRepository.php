@@ -2,25 +2,25 @@
 
 namespace App\Repository;
 
-use App\Entity\AdminBookings;
+use App\Entity\AdminAvailability;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method AdminBookings|null find($id, $lockMode = null, $lockVersion = null)
- * @method AdminBookings|null findOneBy(array $criteria, array $orderBy = null)
- * @method AdminBookings[]    findAll()
- * @method AdminBookings[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method AdminAvailability|null find($id, $lockMode = null, $lockVersion = null)
+ * @method AdminAvailability|null findOneBy(array $criteria, array $orderBy = null)
+ * @method AdminAvailability[]    findAll()
+ * @method AdminAvailability[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class AdminBookingsRepository extends ServiceEntityRepository
+class AdminAvailabilityRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, AdminBookings::class);
+        parent::__construct($registry, AdminAvailability::class);
     }
 
     // /**
-    //  * @return AdminBookings[] Returns an array of AdminBookings objects
+    //  * @return AdminAvailability[] Returns an array of AdminAvailability objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class AdminBookingsRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?AdminBookings
+    public function findOneBySomeField($value): ?AdminAvailability
     {
         return $this->createQueryBuilder('a')
             ->andWhere('a.exampleField = :val')

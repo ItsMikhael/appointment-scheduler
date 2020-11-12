@@ -1,4 +1,4 @@
-{% extends 'admin/base-admin.html.twig' %}
+{% extends 'admin/base.html.twig' %}
 
 {% block title %}Hello MainController!{% endblock %}
 
@@ -19,7 +19,7 @@
                     {% endfor %}
             </div>
             <div class="booking-return">
-                <a href="{{ path('admin.calendar', {
+                <a href="{{ path('admin-calendar', {
                     'month': month,
                     'year': year
                 })}}" class="btn btn-primary">Powrót</a>

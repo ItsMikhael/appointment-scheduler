@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Entity\AdminBookings;
+use App\Entity\AdminAvailability;
 use App\Entity\Bookings;
 use App\Entity\User;
 use DateTime;
@@ -22,7 +22,7 @@ class UserController extends AbstractController
      */
     public function userMain(): Response {
         if($this->isGranted('ROLE_ADMIN')) {
-            return $this->redirectToRoute('admin.main');
+            return $this->redirectToRoute('admin-main');
         }
         if ($this->getUser()) {
             $em = $this->getDoctrine()->getManager();
@@ -31,7 +31,7 @@ class UserController extends AbstractController
             foreach($admins as $admin) {
                 $adminUsernames[] = $admin->getUsername();
             }
-            return $this->render('user/user-main.html.twig', ['admins' => $adminUsernames]);
+            return $this->render('user/main.html.twig', ['admins' => $adminUsernames]);
         } else {
             return $this->redirectToRoute('main');
         }
@@ -46,7 +46,7 @@ class UserController extends AbstractController
         if($this->isGranted('ROLE_USER')) {
             $calendar = new Calendar();
             $calendar->setIsAdmin(false);
-            return $this->render('user/user-calendar.html.twig', [
+            return $this->render('user/calendar.html.twig', [
                 'calendar' => $calendar->buildCalendar($this->getDoctrine()->getManager())]);
         }
     }
@@ -63,7 +63,7 @@ class UserController extends AbstractController
             $year = $date->format('Y');
 
             $em = $this->getDoctrine()->getManager();
-            $availableBookings = $em->getRepository(AdminBookings::class)->findBy([
+            $availableBookings = $em->getRepository(AdminAvailability::class)->findBy([
                 'date' => $_GET['date'],
                 'admin_id' => $admin->getId(),
             ]);
@@ -85,7 +85,7 @@ class UserController extends AbstractController
             sort($timeslots);
 
 
-            return $this->render('user/user-booking.html.twig', [
+            return $this->render('user/booking.html.twig', [
                 'date' => $_GET['date'],
                 'month' => $month,
                 'year' => $year,
@@ -104,7 +104,7 @@ class UserController extends AbstractController
         $date = $request->request->get('date');
         $timeslot = $request->request->get('timeslot');
 
-        $adminBooking = $em->getRepository(AdminBookings::Class)->findOneBy([
+        $adminBooking = $em->getRepository(AdminAvailability::Class)->findOneBy([
             'date' => $date,
             'timeslot' => $timeslot,
         ]);
@@ -145,7 +145,7 @@ class UserController extends AbstractController
         $adminBookings = [];
 
         foreach($bookings as $booking) {
-            $adminBookings[] = $em->getRepository(AdminBookings::class)->findOneBy([
+            $adminBookings[] = $em->getRepository(AdminAvailability::class)->findOneBy([
                 'id' => $booking->getTimeslotId(),
             ]);
         }
@@ -158,7 +158,7 @@ class UserController extends AbstractController
             ])->getEmail()];
         }
 
-        return $this->render('user/user-appointments.html.twig', [
+        return $this->render('user/appointments.html.twig', [
             'appointments' => $appointments]);
     }
 
@@ -175,7 +175,7 @@ class UserController extends AbstractController
             'timeslot_id' => $timeslot_id,
         ]));
 
-        $em->getRepository(AdminBookings::class)->findOneBy([
+        $em->getRepository(AdminAvailability::class)->findOneBy([
             'id' => $timeslot_id,
         ])->setIsBooked(false);
 
